@@ -1,0 +1,13 @@
+# {{ singleCreator.firstName }} {{ singleCreator.middleName }} {{ singleCreator.lastName }} {{ singleCreator.suffix }}
+## Details
+{%- for url in singleCreator.urls %}
+### {{ url.type }}
+#### [Link]({{ url.url }})
+{%- endfor %}
+## [Thumbnail]({{ singleCreator.thumbnail.path }}.{{ singleCreator.thumbnail.extension }})
+## Totals
+### Comics: {{ singleCreator.comics.available }}
+### Series: {{ singleCreator.series.available}}
+### Stories: {{ singleCreator.stories.available}}
+### Events: {{ singleCreator.events.available}}
+## Modified: {{ singleCreator.modified }}

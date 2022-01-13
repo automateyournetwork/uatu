@@ -1,0 +1,11 @@
+# FIRM  15 
+## Details
+### detail
+#### [Link](http://marvel.com/comics/creators/10669/firm_15?utm_campaign=apiRef&utm_source=225578a89fc76f3d20fbffda5d17a88d)
+## [Thumbnail](http://i.annihil.us/u/prod/marvel/i/mg/8/a0/4bd1d233bc283.jpg)
+## Totals
+### Comics: 4
+### Series: 3
+### Stories: 20
+### Events: 1
+## Modified: -0001-11-30T00:00:00-0500

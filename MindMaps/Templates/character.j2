@@ -1,0 +1,14 @@
+# {{ singlePerson.name }}
+## Description: {{ singlePerson.description }}
+## Details
+{%- for url in singlePerson.urls %}
+### {{ url.type }}
+#### [Link]({{ url.url }})
+{%- endfor %}
+## [Thumbnail]({{ singlePerson.thumbnail.path }}.{{ singlePerson.thumbnail.extension }})
+## Totals
+### Comics: {{ singlePerson.comics.available }}
+### Series: {{ singlePerson.series.available}}
+### Stories: {{ singlePerson.stories.available}}
+### Events: {{ singlePerson.events.available}}
+## Modified: {{ singlePerson.modified }}

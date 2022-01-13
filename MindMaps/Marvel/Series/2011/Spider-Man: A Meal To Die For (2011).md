@@ -1,0 +1,20 @@
+# Spider-Man: A Meal To Die For (2011)
+## Description: None
+## Dates
+### Start Year: 2011
+### End Year: 2011
+## Rating: A
+## Type: one shot
+## Modifed: 2011-02-23T13:35:36-0500
+## [Thumbnail](http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg)
+## Totals
+### Comics: 1
+### Stories: 2
+### Events: 0
+### Creators: 3
+## Timeline
+### Previous Series: 
+#### [Link]()
+### Next Series: 
+#### [Link]()
+## Modified: 2011-02-23T13:35:36-0500

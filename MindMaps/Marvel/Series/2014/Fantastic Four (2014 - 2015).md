@@ -1,0 +1,20 @@
+# Fantastic Four (2014 - 2015)
+## Description: None
+## Dates
+### Start Year: 2014
+### End Year: 2015
+## Rating: 
+## Type: 
+## Modifed: 2018-08-06T11:50:11-0400
+## [Thumbnail](http://i.annihil.us/u/prod/marvel/i/mg/9/10/542d784bc1cd1.jpg)
+## Totals
+### Comics: 35
+### Stories: 69
+### Events: 0
+### Creators: 16
+## Timeline
+### Previous Series: 
+#### [Link]()
+### Next Series: 
+#### [Link]()
+## Modified: 2018-08-06T11:50:11-0400

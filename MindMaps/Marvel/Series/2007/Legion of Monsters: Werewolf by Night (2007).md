@@ -1,0 +1,20 @@
+# Legion of Monsters: Werewolf by Night (2007)
+## Description: None
+## Dates
+### Start Year: 2007
+### End Year: 2007
+## Rating: PARENTAL ADVISORY
+## Type: 
+## Modifed: 2011-05-31T15:54:40-0400
+## [Thumbnail](http://i.annihil.us/u/prod/marvel/i/mg/8/e0/4bc5a56572cb0.jpg)
+## Totals
+### Comics: 1
+### Stories: 2
+### Events: 0
+### Creators: 7
+## Timeline
+### Previous Series: 
+#### [Link]()
+### Next Series: 
+#### [Link]()
+## Modified: 2011-05-31T15:54:40-0400

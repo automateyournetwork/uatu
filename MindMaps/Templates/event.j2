@@ -1,0 +1,23 @@
+# {{ singleEvent.title }}
+## Description: {{ singleEvent.description }}
+## Details
+{%- for url in singleEvent.urls %}
+### {{ url.type }}
+#### [Link]({{ url.url }})
+{%- endfor %}
+## Dates
+### Event Start: {{ singleEvent.start }}
+### Event End: {{ singleEvent.end }}
+## [Thumbnail]({{ singleEvent.thumbnail.path }}.{{ singleEvent.thumbnail.extension }})
+## Totals
+### Creators: {{ singleEvent.creators.available }}
+### Characters: {{ singleEvent.characters.available }}
+### Stories: {{ singleEvent.stories.available }}
+### Comics: {{ singleEvent.comics.available }}
+### Series: {{ singleEvent.series.available }}
+## Timeline
+### Previous Event {{ singleEvent.previous.name }}
+#### [Link]({{ singleEvent.previous.resourceURI }})
+### Next Event {{ singleEvent.next.name }}
+#### [Link]({{ singleEvent.next.resourceURI }})
+## Modified: {{ singleEvent.modified }}
