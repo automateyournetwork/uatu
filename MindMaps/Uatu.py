@@ -1,12 +1,17 @@
 import requests
 import json
 import time
+import os
+from dotenv import load_dotenv
+
 # -------------------------
 # Jinja2
 # -------------------------
 from jinja2 import Environment, FileSystemLoader
 template_dir = 'Templates/'
 env = Environment(loader=FileSystemLoader(template_dir))
+
+load_dotenv()
 
 # -------------------------
 # Headers
@@ -22,130 +27,130 @@ headers = {
 # -------------------------
 
 apiTS = "uatu"
-marvelAPIkey = "225578a89fc76f3d20fbffda5d17a88d"
-marvelMD5hash = "0b70457b1a50ceef71816e06a81966a8"
+marvelAPIkey = os.getenv("APIKEY")
+marvelMD5hash = os.getenv("MD5HASH")
 
-# # -------------------------
-# # All Characters
-# # -------------------------
+# -------------------------
+# All Characters
+# -------------------------
 
-# person_template = env.get_template('character.j2')
-# people = requests.request("GET", f"http://gateway.marvel.com/v1/public/characters?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100", headers=headers)
-# peopleJSON = people.json()
-# peopleList = peopleJSON['data']['results']
-# numberOfPages =  peopleJSON['data']['total'] / 100
-# offset = 100
-# while numberOfPages > 0:
-#     people = requests.request("GET", f"http://gateway.marvel.com/v1/public/characters?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100&offset={ offset }", headers=headers)
-#     peopleJSON = people.json()
-#     peopleList.extend(peopleJSON['data']["results"])
-#     offset = offset + 100
-#     numberOfPages = numberOfPages - 1
-#     time.sleep(0.5)
+person_template = env.get_template('character.j2')
+people = requests.request("GET", f"http://gateway.marvel.com/v1/public/characters?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100", headers=headers)
+peopleJSON = people.json()
+peopleList = peopleJSON['data']['results']
+numberOfPages =  peopleJSON['data']['total'] / 100
+offset = 100
+while numberOfPages > 0:
+    people = requests.request("GET", f"http://gateway.marvel.com/v1/public/characters?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100&offset={ offset }", headers=headers)
+    peopleJSON = people.json()
+    peopleList.extend(peopleJSON['data']["results"])
+    offset = offset + 100
+    numberOfPages = numberOfPages - 1
+    time.sleep(0.5)
 
-# # -------------------------
-# # Single Character
-# # -------------------------
+# -------------------------
+# Single Character
+# -------------------------
 
-# for person in peopleList:
-#     singlePersonJSON = person
+for person in peopleList:
+    singlePersonJSON = person
 
-# # -------------------------
-# # Person Template
-# # -------------------------
+# -------------------------
+# Person Template
+# -------------------------
 
-#     parsed_all_output = person_template.render(singlePerson = singlePersonJSON)
+    parsed_all_output = person_template.render(singlePerson = singlePersonJSON)
 
-# # -------------------------
-# # Save Characters File
-# # -------------------------
+# -------------------------
+# Save Characters File
+# -------------------------
 
-#     with open(f"Marvel/Characters/{ singlePersonJSON['name'].replace('/','') }.md", "w") as fh:
-#         fh.write(parsed_all_output)                
-#         fh.close()
+    with open(f"Marvel/Characters/{ singlePersonJSON['name'].replace('/','') }.md", "w") as fh:
+        fh.write(parsed_all_output)                
+        fh.close()
 
-# # -------------------------
-# # All Events
-# # -------------------------
+# -------------------------
+# All Events
+# -------------------------
 
-# event_template = env.get_template('event.j2')
-# marvelEvent = requests.request("GET", f"http://gateway.marvel.com/v1/public/events?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100", headers=headers)
-# marvelEventJSON = marvelEvent.json()
-# marvelEventList = marvelEventJSON['data']['results']
-# numberOfPages =  marvelEventJSON['data']['total'] / 100
-# offset = 100
-# while numberOfPages > 0:
-#     marvelEvent = requests.request("GET", f"http://gateway.marvel.com/v1/public/events?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100&offset={ offset }", headers=headers)
-#     marvelEventJSON = marvelEvent.json()
-#     marvelEventList.extend(marvelEventJSON['data']["results"])
-#     offset = offset + 100
-#     numberOfPages = numberOfPages - 1
-#     time.sleep(0.5)
+event_template = env.get_template('event.j2')
+marvelEvent = requests.request("GET", f"http://gateway.marvel.com/v1/public/events?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100", headers=headers)
+marvelEventJSON = marvelEvent.json()
+marvelEventList = marvelEventJSON['data']['results']
+numberOfPages =  marvelEventJSON['data']['total'] / 100
+offset = 100
+while numberOfPages > 0:
+    marvelEvent = requests.request("GET", f"http://gateway.marvel.com/v1/public/events?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100&offset={ offset }", headers=headers)
+    marvelEventJSON = marvelEvent.json()
+    marvelEventList.extend(marvelEventJSON['data']["results"])
+    offset = offset + 100
+    numberOfPages = numberOfPages - 1
+    time.sleep(0.5)
 
-# # -------------------------
-# # Single Event
-# # -------------------------
+# -------------------------
+# Single Event
+# -------------------------
 
-# for event in marvelEventList:
-#     singleEventJSON = event
+for event in marvelEventList:
+    singleEventJSON = event
 
-# # -------------------------
-# # Person Template
-# # -------------------------
+# -------------------------
+# Person Template
+# -------------------------
 
-#     parsed_all_output = event_template.render(singleEvent = singleEventJSON)
+    parsed_all_output = event_template.render(singleEvent = singleEventJSON)
 
-# # -------------------------
-# # Save Event File
-# # -------------------------
+# -------------------------
+# Save Event File
+# -------------------------
 
-#     with open(f"Marvel/Events/{ singleEventJSON['title'].replace('/','') }.md", "w") as fh:
-#         fh.write(parsed_all_output)                
-#         fh.close()
+    with open(f"Marvel/Events/{ singleEventJSON['title'].replace('/','') }.md", "w") as fh:
+        fh.write(parsed_all_output)                
+        fh.close()
 
-# # -------------------------
-# # All Creators
-# # -------------------------
+# -------------------------
+# All Creators
+# -------------------------
 
-# creator_template = env.get_template('creator.j2')
-# creator = requests.request("GET", f"http://gateway.marvel.com/v1/public/creators?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100", headers=headers)
-# creatorJSON = creator.json()
-# creatorList = creatorJSON['data']['results']
-# numberOfPages =  creatorJSON['data']['total'] / 100
-# offset = 100
-# while numberOfPages > 0:
-#     creator = requests.request("GET", f"http://gateway.marvel.com/v1/public/creators?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100&offset={ offset }", headers=headers)
-#     creatorJSON = creator.json()
-#     creatorList.extend(creatorJSON['data']["results"])
-#     offset = offset + 100
-#     numberOfPages = numberOfPages - 1
-#     time.sleep(10)
-#     print(f"Number pages left { numberOfPages }")
+creator_template = env.get_template('creator.j2')
+creator = requests.request("GET", f"http://gateway.marvel.com/v1/public/creators?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100", headers=headers)
+creatorJSON = creator.json()
+creatorList = creatorJSON['data']['results']
+numberOfPages =  creatorJSON['data']['total'] / 100
+offset = 100
+while numberOfPages > 0:
+    creator = requests.request("GET", f"http://gateway.marvel.com/v1/public/creators?ts={ apiTS }&apikey={ marvelAPIkey }&hash={ marvelMD5hash }&limit=100&offset={ offset }", headers=headers)
+    creatorJSON = creator.json()
+    creatorList.extend(creatorJSON['data']["results"])
+    offset = offset + 100
+    numberOfPages = numberOfPages - 1
+    time.sleep(10)
+    print(f"Number pages left { numberOfPages }")
 
-# # -------------------------
-# # Single Creator with First and Last Name
-# # -------------------------
+# -------------------------
+# Single Creator with First and Last Name
+# -------------------------
 
-# print("Finished Building Creator List")
+print("Finished Building Creator List")
 
-# for creator in creatorList:
-#     if creator['firstName']:
-#         if creator['lastName']:
-#             singleCreatorJSON = creator
+for creator in creatorList:
+    if creator['firstName']:
+        if creator['lastName']:
+            singleCreatorJSON = creator
 
-# # -------------------------
-# # Person Template
-# # -------------------------
+# -------------------------
+# Person Template
+# -------------------------
 
-#             parsed_all_output = creator_template.render(singleCreator = singleCreatorJSON)
+            parsed_all_output = creator_template.render(singleCreator = singleCreatorJSON)
 
-# # -------------------------
-# # Save Event File
-# # -------------------------
+# -------------------------
+# Save Event File
+# -------------------------
 
-#             with open(f"Marvel/Creators/{ singleCreatorJSON['firstName'] }_{ singleCreatorJSON['lastName'] }.md", "w") as fh:
-#                 fh.write(parsed_all_output)                
-#                 fh.close()
+            with open(f"Marvel/Creators/{ singleCreatorJSON['firstName'] }_{ singleCreatorJSON['lastName'] }.md", "w") as fh:
+                fh.write(parsed_all_output)                
+                fh.close()
 
 # -------------------------
 # All Series
